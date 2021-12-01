@@ -10,9 +10,9 @@ int main(int argc, char *argv[])
 
     encipheror::test();
 
-//    QQmlApplicationEngine engine;
-//    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+    QQmlApplicationEngine engine;
+    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
-//    return app.exec();
+    return app.exec();
     return 0;
 }

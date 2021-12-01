@@ -4,28 +4,50 @@ import QtQuick.Window 2.2
 Window {
     visible: true
     width: 640
-    height: 480
-    title: qsTr("Hello World")
+    height: 640
+    title: qsTr("Cencipheror")
 
-    MouseArea {
+
+    Column {
         anchors.fill: parent
-        onClicked: {
-            console.log(qsTr('Clicked on background. Text: "' + textEdit.text + '"'))
-        }
-    }
+        spacing: 10
 
-    TextEdit {
-        id: textEdit
-        text: qsTr("Enter some text...")
-        verticalAlignment: Text.AlignVCenter
-        anchors.top: parent.top
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.topMargin: 20
         Rectangle {
-            anchors.fill: parent
-            anchors.margins: -10
+            id: inputRec
+            width: parent.width
+            height: (parent.height - parent.spacing - buttonField.height) / 2
             color: "transparent"
-            border.width: 1
+            border.width: 10
+            border.color: "lightgray"
+
+            TextEdit {
+                id: input
+                anchors.fill: parent
+                anchors.margins: 15
+                text: qsTr("Enter some text...")
+            }
+         }
+
+        Rectangle {
+            width: parent.width
+            height: inputRec.height
+            color: "transparent"
+            border.width: 10
+            border.color: "lightgray"
+
+            TextEdit {
+                id: output
+                anchors.fill: parent
+                anchors.margins: 15
+                text: qsTr("Enter some text...")
+            }
+         }
+
+        Row {
+            id: buttonField
+            width: parent.width
+            height: 30
         }
+
     }
 }
