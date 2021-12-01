@@ -20,6 +20,7 @@ class encipheror : public QObject {
   Q_INVOKABLE QString encrypt(const QString &input);
   Q_INVOKABLE QString decrypt(const QString &input);
   Q_INVOKABLE bool verify(const QString &input);
+  Q_INVOKABLE bool validEncryptText(const QString &intput);
   static void test(int testCnt);
 
  private:

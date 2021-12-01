@@ -39,6 +39,16 @@ bool encipheror::verify(const QString &input) {
   return input == decodeText;
 }
 
+bool encipheror::validEncryptText(const QString &input) {
+  static QString hexStr("0123456789abcdef");
+  if (input.length() % 32 != 0) return false;
+
+  for (int i = 0; i < input.length(); i++)
+    if (-1 == hexStr.indexOf(input[i].toLower())) return false;
+
+  return true;
+}
+
 void encipheror::test(int testCnt) {
   auto _randomStr = [](const int randomStringLength) -> QString {
     static const QString possibleCharacters(
@@ -58,6 +68,7 @@ void encipheror::test(int testCnt) {
     QString encodeText = en.encrypt(plainText);
     QString decodeText = en.decrypt(encodeText);
     Q_ASSERT(plainText == decodeText);
+    //    Q_ASSERT(encodeText.length() % 32 == 0);
   }
 
   qDebug() << "TEST OK!!!";

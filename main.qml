@@ -85,6 +85,11 @@ Window {
           text: qsTr("解密")
           onClicked: {
             encipheror.setPasswd(passwd.text)
+            if (!encipheror.validEncryptText(input.text)) {
+              output.text = qsTr("非法解密文本！！！")
+              return
+            }
+
             output.text = encipheror.decrypt(input.text)
           }
         }
