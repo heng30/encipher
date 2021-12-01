@@ -39,7 +39,6 @@ Window {
           color: "transparent"
           border.width: 1
           border.color: "lightblue"
-          clip: true
 
           ScrollView {
             anchors.fill: parent
@@ -55,6 +54,9 @@ Window {
               mouseSelectionMode: TextEdit.SelectWords
               wrapMode: TextEdit.Wrap
               placeholderText: qsTr("输入密码")
+
+              Keys.onTabPressed: input.forceActiveFocus()
+              Component.onCompleted: forceActiveFocus()
             }
           }
         }
@@ -109,7 +111,7 @@ Window {
           selectByMouse: true
           mouseSelectionMode: TextEdit.SelectWords
           wrapMode: TextEdit.Wrap
-          placeholderText: qsTr("输入加密文本")
+          placeholderText: qsTr("输入...")
         }
       }
     }
@@ -132,7 +134,7 @@ Window {
           selectByMouse: true
           mouseSelectionMode: TextEdit.SelectWords
           wrapMode: TextEdit.Wrap
-          placeholderText: qsTr("加密文本")
+          placeholderText: qsTr("输出...")
         }
       }
     }

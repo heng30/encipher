@@ -8,7 +8,7 @@
 int main(int argc, char* argv[]) {
   QGuiApplication app(argc, argv);
   QQmlApplicationEngine engine;
-  //    encipheror::test(1000);
+  //  encipheror::test(1000);
   engine.rootContext()->setContextProperty("encipheror", new encipheror());
   engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
   return app.exec();
