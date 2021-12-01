@@ -1,18 +1,15 @@
-#include "encipheror.h"
-
+#include <QDebug>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QDebug>
+#include <QQmlContext>
 
-int main(int argc, char *argv[])
-{
-    QGuiApplication app(argc, argv);
+#include "encipheror.h"
 
-    encipheror::test();
-
-    QQmlApplicationEngine engine;
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-
-    return app.exec();
-    return 0;
+int main(int argc, char* argv[]) {
+  QGuiApplication app(argc, argv);
+  QQmlApplicationEngine engine;
+  //    encipheror::test(1000);
+  engine.rootContext()->setContextProperty("encipheror", new encipheror());
+  engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+  return app.exec();
 }
