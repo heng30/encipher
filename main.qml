@@ -1,6 +1,6 @@
-import QtQuick
-import QtQuick.Window
-import QtQuick.Controls
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
 
 Window {
   property real fontPixel: 20
@@ -15,6 +15,7 @@ Window {
 
   Column {
     anchors.fill: parent
+    anchors.margins: 5
     spacing: 10
 
     Keys.onEscapePressed: Qt.quit()
@@ -26,11 +27,6 @@ Window {
 
       Row {
         anchors.fill: parent
-        anchors {
-          leftMargin: 5
-          rightMargin: 5
-          topMargin: 5
-        }
         spacing: 5
 
         Rectangle {
@@ -53,7 +49,7 @@ Window {
               verticalAlignment: TextEdit.AlignVCenter
               mouseSelectionMode: TextEdit.SelectWords
               wrapMode: TextEdit.Wrap
-              placeholderText: qsTr("输入密码")
+              placeholderText: qsTr("请输入密码")
 
               Keys.onTabPressed: input.forceActiveFocus()
               Component.onCompleted: forceActiveFocus()
@@ -67,14 +63,14 @@ Window {
           font.pixelSize: topLayout.fontPixel
           text: qsTr("加密")
           onClicked: {
-            encipheror.setPasswd(passwd.text)
-            var flag = encipheror.verify(input.text)
+            encipher.setPasswd(passwd.text)
+            var flag = encipher.verify(input.text)
             if (!flag) {
               output.text = qsTr("程序内部问题，无法加解密！！！")
               return
             }
 
-            output.text = encipheror.encrypt(input.text)
+            output.text = encipher.encrypt(input.text)
           }
         }
 
@@ -84,13 +80,13 @@ Window {
           font.pixelSize: topLayout.fontPixel
           text: qsTr("解密")
           onClicked: {
-            encipheror.setPasswd(passwd.text)
-            if (!encipheror.validEncryptText(input.text)) {
+            encipher.setPasswd(passwd.text)
+            if (!encipher.validEncryptText(input.text)) {
               output.text = qsTr("非法解密文本！！！")
               return
             }
 
-            output.text = encipheror.decrypt(input.text)
+            output.text = encipher.decrypt(input.text)
           }
         }
       }
@@ -101,7 +97,7 @@ Window {
       width: parent.width
       height: (parent.height - topField.height - parent.spacing * 2) / 2
       color: "transparent"
-      border.width: 5
+      border.width: 1
       border.color: "lightgray"
 
       ScrollView {
@@ -116,7 +112,7 @@ Window {
           selectByMouse: true
           mouseSelectionMode: TextEdit.SelectWords
           wrapMode: TextEdit.Wrap
-          placeholderText: qsTr("输入...")
+          placeholderText: qsTr("请输入明文...")
         }
       }
     }
@@ -126,7 +122,7 @@ Window {
       width: parent.width
       height: inputRect.height
       color: "transparent"
-      border.width: 5
+      border.width: 1
       border.color: "lightgray"
 
       ScrollView {
@@ -139,7 +135,8 @@ Window {
           selectByMouse: true
           mouseSelectionMode: TextEdit.SelectWords
           wrapMode: TextEdit.Wrap
-          placeholderText: qsTr("输出...")
+          placeholderText: qsTr("输出的密文")
+          readOnly: true
         }
       }
     }

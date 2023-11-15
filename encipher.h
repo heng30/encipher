@@ -8,13 +8,13 @@
 
 #include "qaesencryption.h"
 
-class encipheror : public QObject {
+class encipher : public QObject {
   Q_OBJECT
 
  public:
-  explicit encipheror(const QString passwd = QString(),
+  explicit encipher(const QString passwd = QString(),
                       QObject *parent = nullptr);
-  ~encipheror() = default;
+  ~encipher() = default;
 
   Q_INVOKABLE void setPasswd(const QString &passwd);
   Q_INVOKABLE QString encrypt(const QString &input);

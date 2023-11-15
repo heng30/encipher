@@ -3,13 +3,13 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
-#include "encipheror.h"
+#include "encipher.h"
 
 int main(int argc, char* argv[]) {
   QGuiApplication app(argc, argv);
   QQmlApplicationEngine engine;
-  //  encipheror::test(1000);
-  engine.rootContext()->setContextProperty("encipheror", new encipheror());
+  //  encipher::test(1000);
+  engine.rootContext()->setContextProperty("encipher", new encipher());
   engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
   return app.exec();
 }
