@@ -3,13 +3,15 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 
 Window {
-    property real fontPixel: 20
-
     id: topLayout
+
+    property real fontPixel: 20
+    property bool isShowPassword: false
+
     visible: true
     x: (Screen.desktopAvailableWidth - width) / 2
     y: (Screen.desktopAvailableHeight - height) / 2
-    width: 1000
+    width: 1200
     height: 600
     flags: Qt.Dialog
     title: qsTr("Cencipheror")
@@ -40,7 +42,7 @@ Window {
                     placeholderText: qsTr("请输入密码")
                     Keys.onTabPressed: input.forceActiveFocus()
                     Component.onCompleted: forceActiveFocus()
-                    echoMode: focus ? TextInput.Normal : TextInput.Password
+                    echoMode: topLayout.isShowPassword ? TextInput.Normal : TextInput.Password
                 }
 
                 Row {
@@ -48,6 +50,15 @@ Window {
 
                     height: parent.height
                     spacing: 5
+
+                    Button {
+                        height: parent.height
+                        font.pixelSize: topLayout.fontPixel
+                        text: topLayout.isShowPassword ? qsTr("隐藏") : qsTr("查看")
+                        onClicked: {
+                            topLayout.isShowPassword = !topLayout.isShowPassword;
+                        }
+                    }
 
                     Button {
                         height: parent.height
