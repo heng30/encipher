@@ -19,5 +19,5 @@ SOURCES += main.cpp \
 
 MOC_DIR = build
 RCC_DIR = build
-DESTDIR = build
+# DESTDIR = build
 OBJECTS_DIR = build
